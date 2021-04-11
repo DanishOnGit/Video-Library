@@ -1,23 +1,17 @@
 import "./styles.css";
-import {Navbar,Home} from "./Components";
-import ReactPlayer from 'react-player/youtube'
-
-import {Routes,Route} from "react-router-dom";
-
-
+import { Navbar, Home } from "./Components";
+import { VideoPlayer } from "./Components";
+import { Routes, Route } from "react-router-dom";
 
 export default function App() {
   return (
     <div className="App">
-
       <Navbar />
-      {/* <ReactPlayer controls={true}  url='https://www.youtube.com/watch?v=ysz5S6PUM-U' /> */}
 
       <Routes>
-        <Route to="/" element={<Home/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/video/:videoId" element={<VideoPlayer />} />
       </Routes>
-    
-     
     </div>
   );
 }
