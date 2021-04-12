@@ -2,17 +2,20 @@ import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 import {allVideos} from "../Database"
 import { useVideo } from "../Contexts";
+import {checkIfAlreadyPresent} from "../Utilities"
 export const VideoPlayer = () => {
   
   const { videoId } = useParams();
-  const {dispatch}=useVideo();
+  const {state:{likedVideos,watchLaterVideos,historyVideos},dispatch}=useVideo();
 
   const videoDetails=allVideos.find(item=>item.id===videoId)
+
+  // dispatch({type:"ADD_TO_HISTORY",payload:videoDetails})
    
   return (
     <>
     <div className="video-player-wrapper">
-      <ReactPlayer onStart={()=>dispatch({type:"ADD_TO_HISTORY",payload:videoDetails})}
+      <ReactPlayer onStart={()=>!checkIfAlreadyPresent(historyVideos,videoId)?dispatch({type:"ADD_TO_HISTORY",payload:videoDetails}):null}
         controls={true}
         url={`https://www.youtube.com/watch?${videoId}`}
       />
@@ -20,13 +23,13 @@ export const VideoPlayer = () => {
 
         <ul className="list-items-flex list-non-bullet spaced">
           <li>
-            <i onClick={()=>dispatch({type:"LIKE_VIDEO",payload:videoDetails})} className="fas fa-thumbs-up pointer"></i>
+            <i onClick={()=>!checkIfAlreadyPresent(likedVideos,videoId)?dispatch({type:"LIKE_VIDEO",payload:videoDetails}):null} className="fas fa-thumbs-up pointer"></i>
           </li>
           <li>
             <i className="fas fa-list pointer"></i>
           </li>
           <li>
-            <i onClick={()=>dispatch({type:"ADD_TO_WATCH_LATER",payload:videoDetails})} className="fas fa-clock pointer"></i>
+            <i onClick={()=>!checkIfAlreadyPresent(watchLaterVideos,videoId)?dispatch({type:"ADD_TO_WATCH_LATER",payload:videoDetails}):null} className="fas fa-clock pointer"></i>
           </li>
         </ul>
 
