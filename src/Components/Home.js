@@ -17,22 +17,22 @@ return (
   <div  className="home-wrapper">
 <aside className="home-wrapper__aside">
 <ul className="home-wrapper__aside__list">
-  <NavLink to="/"><li>
-  <i className="fas fa-home"></i><span className="list-item-title">Home</span>
+  <NavLink to="/"><li className="pointer">
+  <i className="fas fa-home pointer"></i><span className="list-item-title">Home</span>
   </li>
   </NavLink>
-  <li>
-  <i class="fas fa-history"></i><span className="list-item-title">History</span>
+  <li className="pointer">
+  <i class="fas fa-history pointer"></i><span className="list-item-title">History</span>
   </li>
-  <li>
-  <i class="fas fa-list"></i><span className="list-item-title">Playlists</span>
+  <li className="pointer">
+  <i class="fas fa-list pointer"></i><span className="list-item-title">Playlists</span>
   </li>
-   <li>
-   <i class="fas fa-clock"></i><span className="list-item-title">Watch later</span>
-  </li>
-  <li>
-  <i class="fas fa-thumbs-up"></i><span className="list-item-title">Liked videos</span>
-  </li>
+  <NavLink to="/watchLaterVideos"><li className="pointer">
+   <i class="fas fa-clock pointer"></i><span className="list-item-title">Watch later</span>
+  </li></NavLink>
+  <NavLink to="/likedVideos"><li className="pointer">
+  <i class="fas fa-thumbs-up pointer"></i><span className="list-item-title">Liked videos</span>
+  </li></NavLink>
 </ul>
 </aside>
 <main className="home-wrapper__main">

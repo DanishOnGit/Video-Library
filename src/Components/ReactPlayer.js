@@ -12,7 +12,7 @@ export const VideoPlayer = () => {
   return (
     <>
     <div className="video-player-wrapper">
-      <ReactPlayer
+      <ReactPlayer onStart={()=>dispatch({type:"ADD_TO_HISTORY",payload:videoDetails})}
         controls={true}
         url={`https://www.youtube.com/watch?${videoId}`}
       />
@@ -20,18 +20,18 @@ export const VideoPlayer = () => {
 
         <ul className="list-items-flex list-non-bullet spaced">
           <li>
-            <i onClick={dispatch({type:"LIKE_VIDEO",payload:videoDetails})} className="fas fa-thumbs-up"></i>
+            <i onClick={()=>dispatch({type:"LIKE_VIDEO",payload:videoDetails})} className="fas fa-thumbs-up pointer"></i>
           </li>
           <li>
-            <i className="fas fa-list"></i>
+            <i className="fas fa-list pointer"></i>
           </li>
           <li>
-            <i className="fas fa-clock"></i>
+            <i onClick={()=>dispatch({type:"ADD_TO_WATCH_LATER",payload:videoDetails})} className="fas fa-clock pointer"></i>
           </li>
         </ul>
 
         <ul className="interactions-wrapper__note list-non-bullet">
-          <li><i className="fas fa-pen"></i> Add Notes</li>
+          <li className="pointer"><i className="fas fa-pen pointer"></i> Add Notes</li>
         </ul>
 
       </div>
