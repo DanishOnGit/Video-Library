@@ -10,7 +10,7 @@ export const VideoPlayer = () => {
 
   const videoDetails=allVideos.find(item=>item.id===videoId)
 
-  // dispatch({type:"ADD_TO_HISTORY",payload:videoDetails})
+ 
    
   return (
     <>

@@ -1,8 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 // import {reducer} from "./Contexts";
-import ReactPlayer from 'react-player/youtube'
 
-import {Link} from "react-router-dom";
 const VideoContext=createContext();
 
 export const VideoProvider= ({children})=> {
