@@ -9,10 +9,9 @@ export const VideoProvider= ({children})=> {
 
   const reducer=(state,action)=>{
     switch(action.type){
-      case "SHOW_VIDEO":{
-        return <Link to="https://www.youtube.com/watch?v=MsHMCZlcrXM&ab_channel=ShuttleLife" ></Link>
-        
-      }
+      case "LIKE_VIDEO":{
+        return {...state,likedVideos:[...state.likedVideos,{...action.payload,existsInLikedVideos:true}]}
+       }
       default:
           return state
     }
